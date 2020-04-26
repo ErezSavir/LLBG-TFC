@@ -3,7 +3,12 @@ const chalk = require('chalk');
 const log = console.log;
 
 (async () => {
-    const browser = await puppeteer.launch();
+  const browser = await puppeteer.launch({
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+    ],
+  });
     const page = await browser.newPage();
     await page.goto('http://brin.iaa.gov.il/aeroinfo/AeroInfo.aspx?msgType=Weather');
     await page.waitForSelector("#chkNorth");
