@@ -153,13 +153,13 @@ app.get("/zuz",
       
       log("searching for index:" + i);
       await page.waitForSelector("#btnSearch", { visible: true, timeout: 30000 })
-      await page.waitFor(3000);
+      await page.waitFor(1500);
       await page.waitForSelector('.tblMainInfo > tbody > tr.tblBody > td.ImgField > img#DataList2_MoreImg_' + i, { visible: true })
       // await page.evaluate((i) => {
       //   document.querySelector('.tblMainInfo > tbody > tr.tblBody > td.ImgField > img#DataList2_MoreImg_' + i).click();
       // });
       await page.click('.tblMainInfo > tbody > tr.tblBody > td.ImgField > img#DataList2_MoreImg_' + i);
-      await page.waitFor(7000);
+      await page.waitFor(3000);
       const result = await page.$$eval('.tblMoreInfo2 tr', rows => {
         return Array.from(rows, row => {
           const columns = row.querySelectorAll('.more_MsgText');
